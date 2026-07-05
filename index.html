@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise File Scanner | Secure Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-shield">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h1>Secure File Scanner</h1>
+            <p>Analyze binary signatures, verify extensions, and detect hidden threats locally.</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <input type="file" id="fileInput" class="file-input">
+                <label for="fileInput" class="upload-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Select File to Analyze
+                </label>
+                <div class="file-info">
+                    <p id="fileNameDisplay">No file selected</p>
+                    <p class="file-limit">Max file size: 100 MB</p>
+                </div>
+                <div id="errorMessage" class="error-message hidden"></div>
+                <button id="scanBtn" class="scan-btn" disabled>Run Security Scan</button>
+            </div>
+
+            <div id="reportSection" class="report-section hidden">
+                <div class="report-header">
+                    <h2>Analysis Report</h2>
+                    <span class="timestamp" id="scanTimestamp"></span>
+                </div>
+                
+                <div class="report-grid">
+                    <div class="report-item">
+                        <strong>File Name</strong>
+                        <span id="repFileName">-</span>
+                    </div>
+                    <div class="report-item">
+                        <strong>Stated Extension</strong>
+                        <span id="repExt">-</span>
+                    </div>
+                    <div class="report-item">
+                        <strong>Detected Type (Signature)</strong>
+                        <span id="repDetected">-</span>
+                    </div>
+                    <div class="report-item full-width">
+                        <strong>SHA-256 Hash</strong>
+                        <span id="repHash" class="hash-text">-</span>
+                    </div>
+                </div>
+
+                <div class="verdict-box" id="verdictBox">
+                    <div class="verdict-header">
+                        <h3>Risk Score: <span id="repScore">0</span>/100</h3>
+                        <p id="repVerdict">Safe</p>
+                    </div>
+                    <ul id="repReasons" class="reasons-list"></ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script> 
+</body>
+</html>
